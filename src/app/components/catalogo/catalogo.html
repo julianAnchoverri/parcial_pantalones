@@ -1,0 +1,15 @@
+<section class="catalogo">
+    <h2 class="titulo">Catalogo</h2>
+    <ul class="listado">
+        @for (pantalon of pantalones(); track pantalon.id){
+        <li class="elemento">
+            {{pantalon.modelName}} |
+            Talle {{pantalon.size}} |
+            ${{pantalon.salePrice}}
+            <a [routerLink]="['/detalle', pantalon.id]" class="btn"> Ver más →</a>
+        </li>
+        }@empty {
+        <p>No hay pantalones cargados</p>
+        }
+    </ul>
+</section>

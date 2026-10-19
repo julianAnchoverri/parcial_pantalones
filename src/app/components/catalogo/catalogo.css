@@ -1,0 +1,7 @@
+.catalogo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border-top: 50px;
+}

@@ -1,0 +1,54 @@
+<section class="formulario">
+    <h2 class="titulo"> Agregando pantalones</h2>
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+        <label for="nombre">Modelo</label>
+        <input id="nombre" type="text" formControlName="modelName" />
+        @if(formulario.controls.modelName.touched && formulario.controls.modelName.errors?.['required']){
+        <span class="error">Campo obligatorio</span>
+        }
+
+        <label for="precio">precio</label>
+        <input id="nombre" type="number" formControlName="salePrice" />
+        @if(formulario.controls.salePrice.touched && formulario.controls.salePrice.errors?.['required']){
+        <span class="error">Campo obligatorio</span>
+        }
+        @if(formulario.controls.salePrice.touched && formulario.controls.salePrice.errors?.['min']){
+        <span class="error">el precio debe ser mayor a 0</span>
+        }
+
+        <label for="stock">Disponible en tienda</label>
+        <input id="stock" type="checkbox" formControlName="isInStore" />
+        @if(formulario.controls.isInStore.touched && formulario.controls.isInStore.errors?.['required']){
+        <span class="error">Campo obligatorio</span>
+        }
+
+        <label for="talle">Talle</label>
+        <input type="radio" formControlName="size" value="XS" /> XS
+        <input type="radio" formControlName="size" value="S" /> S
+        <input type="radio" formControlName="size" value="M" />M
+        <input type="radio" formControlName="size" value="L" />L
+        <input type="radio" formControlName="size" value="XL" />XL
+        @if(formulario.controls.size.touched && formulario.controls.size.errors?.['required']){
+        <span class="error">Campo obligatorio</span>
+        }
+
+        <label for="corte">Corte</label>
+        <select id="corte" formControlName="cut">
+            <option value="">Seleccionar corte...</option>
+            <option value="Recto">Recto</option>
+            <option value="Chupín">Chupín</option>
+            <option value="Wide Leg">Wide Leg</option>
+            <option value="Cargo">Cargo</option>
+        </select>
+        @if(formulario.controls.cut.touched && formulario.controls.cut.errors?.['required']){
+        <span class="error">Campo obligatorio</span>
+        }
+
+        <label for="nota">nota</label>
+        <textarea id="nota" formControlName="note"></textarea>
+        
+        <button type="submit" [disabled]="formulario.invalid">Enviar</button>
+        <button type="reset">borrar</button>
+    </form>
+
+</section>
